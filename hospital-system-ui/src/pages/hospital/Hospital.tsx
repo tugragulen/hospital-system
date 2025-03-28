@@ -1,13 +1,12 @@
 import React from 'react';
 import {Box} from "@mui/material";
-import Dashboard from "./components/Dashboard";
 
-function App() {
+const Hospital = () => {
     return (
         <Box>
-            <Dashboard/>
+            Hastane kayıt ekranı
         </Box>
     );
-}
+};
 
-export default App;
+export default Hospital;

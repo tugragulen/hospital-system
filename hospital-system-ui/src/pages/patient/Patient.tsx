@@ -1,13 +1,12 @@
 import React from 'react';
 import {Box} from "@mui/material";
-import Dashboard from "./components/Dashboard";
 
-function App() {
+const Patient = () => {
     return (
         <Box>
-            <Dashboard/>
+            Hasta Kayıt Ekranı
         </Box>
     );
-}
+};
 
-export default App;
+export default Patient;
