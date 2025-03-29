@@ -4,3 +4,8 @@ export interface MenuOptionModel {
     component: React.JSX.Element;
     icon: React.JSX.Element;
 }
+
+export interface DropdownOptionModel {
+    id: string;
+    value: string;
+}

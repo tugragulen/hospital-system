@@ -23,16 +23,17 @@ const drawerWidth = 240;
 const menuOptions: MenuOptionModel[] = [
     {
         id: 1,
+        name: "Hastane Kayıt",
+        component: <Hospital/>,
+        icon: <LocalHospitalOutlinedIcon/>
+    },
+    {
+        id: 2,
         name: "Hasta Kayıt",
         component: <Patient/>,
         icon: <PersonAddAltOutlinedIcon/>
     },
-    {
-        id: 2,
-        name: "Hastane Kayıt",
-        component: <Hospital/>,
-        icon: <LocalHospitalOutlinedIcon/>
-    }
+
 
 ]
 
