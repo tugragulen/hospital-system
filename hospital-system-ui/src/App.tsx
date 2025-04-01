@@ -1,12 +1,13 @@
 import React from 'react';
-import {Box} from "@mui/material";
 import Dashboard from "./components/Dashboard";
+import Init from "./store/Init";
 
 function App() {
     return (
-        <Box>
+        <>
+            <Init/>
             <Dashboard/>
-        </Box>
+        </>
     );
 }
 

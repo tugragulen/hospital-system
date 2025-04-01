@@ -9,3 +9,10 @@ export interface DropdownOptionModel {
     id: string;
     value: string;
 }
+
+export interface HospitalModel {
+    id?: string;
+    name: string;
+    address: string;
+    hospitalType: string;
+}

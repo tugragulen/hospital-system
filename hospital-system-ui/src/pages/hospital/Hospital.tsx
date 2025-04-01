@@ -2,10 +2,13 @@ import React, {useState} from 'react';
 import {Box, Button} from "@mui/material";
 import TextAreaView from "../../components/TextAreaView";
 import TextFieldView from "../../components/TextFieldView";
-import {DropdownOptionModel} from "../../models/Models";
+import {DropdownOptionModel, HospitalModel} from "../../models/Models";
 import DropdownView from "../../components/DropdownView";
 import Typography from "@mui/material/Typography";
 import FormBox from "../../components/FormBox";
+import {postHospital} from "../../api/ApiService";
+import {useDispatch} from "react-redux";
+import {addHospital} from "../../store/slices/HospitalSlice";
 
 export const hospitalTypes: DropdownOptionModel[] = [
     {
@@ -27,7 +30,7 @@ export const hospitalTypes: DropdownOptionModel[] = [
 ]
 
 const Hospital = () => {
-
+    const dispatch = useDispatch();
     const [name, setName] = useState<string>();
     const [address, setAddress] = useState<string>();
     const [hospitalType, setHospitalType] = useState<string | undefined>();
@@ -54,8 +57,19 @@ const Hospital = () => {
         return !!name && !!address && !!hospitalType;
     }
 
-    const addHospital = () => {
-        // TODO SEND BACKEND
+    const createHospital = () => {
+        if (checkRequiredFields()) {
+            const hospital: HospitalModel = {
+                name: name!,
+                address: address!,
+                hospitalType: hospitalType!
+            }
+            postHospital(hospital)
+                .then((response) => {
+                    dispatch(addHospital(response));
+                })
+                .catch((error) => console.error("Hastane kayıt hatası", error));
+        }
     }
 
     return (
@@ -98,7 +112,7 @@ const Hospital = () => {
             />
 
             <Box width={"100%"} display={'flex'} justifyContent={'end'}>
-                <Button variant={"outlined"} onClick={addHospital}>Add</Button>
+                <Button variant={"outlined"} onClick={createHospital}>Add</Button>
                 <Button variant={"outlined"} onClick={clearForm}>Cancel</Button>
             </Box>
         </FormBox>

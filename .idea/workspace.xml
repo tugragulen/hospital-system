@@ -4,20 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="29bcc859-cd3a-4774-8bdf-5eb9c8aedf2e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/hospital-system.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hospital-system-ui/src/components/DropdownView.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hospital-system-ui/src/components/FormBox.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hospital-system-ui/src/components/TextAreaView.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hospital-system-ui/src/components/TextFieldView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="29bcc859-cd3a-4774-8bdf-5eb9c8aedf2e" name="Changes" comment="creating an hospital ui impl.">
+      <change afterPath="$PROJECT_DIR$/hospital-system-ui/src/api/ApiService.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hospital-system-ui/src/store/Init.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hospital-system-ui/src/store/Store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hospital-system-ui/src/store/slices/HospitalSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hospital-system-ui/src/components/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/hospital-system-ui/src/components/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital-system-service/src/main/java/com/example/hospitalSystem/controller/HospitalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hospital-system-service/src/main/java/com/example/hospitalSystem/controller/HospitalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital-system-ui/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/hospital-system-ui/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital-system-ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/hospital-system-ui/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital-system-ui/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/hospital-system-ui/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital-system-ui/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/hospital-system-ui/src/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hospital-system-ui/src/models/Models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hospital-system-ui/src/models/Models.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hospital-system-ui/src/pages/hospital/Hospital.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/hospital-system-ui/src/pages/hospital/Hospital.tsx" afterDir="false" />
     </list>
@@ -59,9 +57,14 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.HospitalSystemApplication.executor": "Debug",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
@@ -76,7 +79,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="Spring Boot.HospitalSystemApplication">
     <configuration name="HospitalSystemApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="hospitalSystem" />
@@ -118,11 +121,36 @@
       <option name="presentableId" value="Default" />
       <updated>1743193357538</updated>
       <workItem from="1743193359534" duration="800000" />
-      <workItem from="1743260718802" duration="7053000" />
+      <workItem from="1743260718802" duration="7771000" />
+      <workItem from="1743421863184" duration="3575000" />
     </task>
+    <task id="LOCAL-00001" summary="creating an hospital ui impl.">
+      <option name="closed" value="true" />
+      <created>1743268286012</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1743268286012</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="creating an hospital ui impl." />
+    <option name="LAST_COMMIT_MESSAGE" value="creating an hospital ui impl." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/hospital-system-service/src/main/java/com/example/hospitalSystem/controller/HospitalController.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
