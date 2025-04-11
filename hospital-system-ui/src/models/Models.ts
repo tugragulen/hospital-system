@@ -16,3 +16,15 @@ export interface HospitalModel {
     address: string;
     hospitalType: string;
 }
+
+export interface PatientModel {
+    id?: string;
+    name: string;
+    surname: string;
+    gender: string;
+    age: number;
+    tcNumber: string;
+    complaint: string;
+    address: string;
+    hospital: HospitalModel;
+}

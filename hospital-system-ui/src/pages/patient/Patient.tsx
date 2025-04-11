@@ -4,21 +4,26 @@ import TextFieldView from "../../components/TextFieldView";
 import FormBox from "../../components/FormBox";
 import {HospitalModel} from "../../models/Models";
 import TextAreaView from "../../components/TextAreaView";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../store/Store";
 import DropdownView from "../../components/DropdownView";
-import {Box, Button} from "@mui/material";
+import {Box, Button, FormControlLabel, Radio, RadioGroup} from "@mui/material";
+import {GenderEnum} from "../../models/Enums";
+import {postPatient} from "../../api/ApiService";
+import {addPatient} from "../../store/slices/PatientSlice";
 
 const Patient = () => {
     const [name, setName] = useState<string | undefined>("");
     const [surname, setSurname] = useState<string | undefined>("");
-    const [gender, setGender] = useState<string | undefined>("");
+    const [gender, setGender] = useState<string>(GenderEnum.MALE);
     const [age, setAge] = useState<number | null | undefined>(null);
     const [tcNumber, setTcNumber] = useState<string | undefined>("");
     const [tcError, setTcError] = useState<boolean>(false);
     const [complaint, setComplaint] = useState<string | undefined>("");
     const [address, setAddress] = useState<string | undefined>("");
     const [hospital, setHospital] = useState<HospitalModel | null | undefined>(null);
+
+    const dispatch = useDispatch();
 
     const hospitals = useSelector((state: RootState) => state.hospital.hospitals)
         .map(hospital => {
@@ -47,6 +52,7 @@ const Patient = () => {
         setComplaint("");
         setAddress("");
         setHospital(null);
+        setGender(GenderEnum.MALE)
     }
 
     const checkRequiredFields = () => {
@@ -77,7 +83,22 @@ const Patient = () => {
 
     const createPatient = () => {
         if (checkRequiredFields()) {
-            // send form data to backend.
+            const patient = {
+                name: name!,
+                surname: surname!,
+                age: age!,
+                tcNumber: tcNumber!,
+                complaint: complaint!,
+                address: address!,
+                hospital: hospital!,
+                gender: gender!
+            }
+            postPatient(patient)
+                .then(response => {
+                    clearForm();
+                    dispatch(addPatient(response));
+                })
+                .catch(err => console.error("Hasta oluşturulamadı", err));
         }
 
     }
@@ -105,6 +126,17 @@ const Patient = () => {
                     setSurname(e.target.value)
                 }}
             />
+            <RadioGroup
+                row
+                value={gender}
+                onChange={(event) => {
+                    setGender(event.target.value);
+                }}
+                sx={{marginBottom: "20px"}}
+            >
+                <FormControlLabel control={<Radio/>} label={"Male"} value={GenderEnum.MALE}/>
+                <FormControlLabel control={<Radio/>} label={"Female"} value={GenderEnum.FEMALE}/>
+            </RadioGroup>
             <TextFieldView
                 value={age}
                 label={"Yaş"}

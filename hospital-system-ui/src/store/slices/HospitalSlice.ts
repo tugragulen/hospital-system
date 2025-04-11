@@ -1,5 +1,5 @@
 import {HospitalModel} from "../../models/Models";
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 interface HospitalState {
     hospitals: HospitalModel[];
@@ -13,11 +13,10 @@ const hospitalSlice = createSlice({
     name: "hospital",
     initialState,
     reducers: {
-        addHospital: (state, action) => {
+        addHospital: (state, action: PayloadAction<HospitalModel>) => {
             state.hospitals = [...state.hospitals, action.payload];
         },
-        addHospitals: (state, action) => {
-            console.log("hastaneler getttt")
+        addHospitals: (state, action: PayloadAction<HospitalModel[]>) => {
             state.hospitals = action.payload;
         },
     }

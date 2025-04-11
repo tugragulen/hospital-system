@@ -64,6 +64,7 @@ const Hospital = () => {
             }
             postHospital(hospital)
                 .then((response) => {
+                    clearForm()
                     dispatch(addHospital(response));
                 })
                 .catch((error) => console.error("Hastane kayıt hatası", error));
