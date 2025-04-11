@@ -6,9 +6,8 @@ const TextAreaView = (props: MuiTextFieldProps) => {
     return (
         <TextField
             multiline
-            rows={5}
+            rows={3}
             {...props}
-            margin={"normal"}
         />
     );
 };

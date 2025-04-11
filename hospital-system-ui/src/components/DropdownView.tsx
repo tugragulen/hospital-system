@@ -13,7 +13,6 @@ const DropdownView = ({options, value, ...restProps}: PropType) => {
             select
             value={value ?? ''}
             size={"small"}
-            margin={"normal"}
             {...restProps}
         >
             {options.map((option) => (

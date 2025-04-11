@@ -31,12 +31,9 @@ export const hospitalTypes: DropdownOptionModel[] = [
 
 const Hospital = () => {
     const dispatch = useDispatch();
-    const [name, setName] = useState<string>();
-    const [address, setAddress] = useState<string>();
-    const [hospitalType, setHospitalType] = useState<string | undefined>();
-    const [nameError, setNameError] = useState<boolean>();
-    const [addressError, setAddressError] = useState<boolean>();
-    const [hospitalTypeError, setHospitalTypeError] = useState<boolean>();
+    const [name, setName] = useState<string | undefined>("");
+    const [address, setAddress] = useState<string | undefined>("");
+    const [hospitalType, setHospitalType] = useState<string | undefined>("");
 
     const clearForm = () => {
         setName("");
@@ -45,14 +42,15 @@ const Hospital = () => {
     }
 
     const checkRequiredFields = () => {
-        if (!name) {
-            setNameError(true);
+        // If fields are empty, it means error state.
+        if (name == "") {
+            setName(undefined);
         }
-        if (!address) {
-            setAddressError(true);
+        if (address == "") {
+            setAddress(undefined)
         }
-        if (!hospitalType) {
-            setHospitalTypeError(true)
+        if (hospitalType == "") {
+            setHospitalType(undefined)
         }
         return !!name && !!address && !!hospitalType;
     }
@@ -79,41 +77,38 @@ const Hospital = () => {
                 value={name}
                 label={"İsim"}
                 required
-                error={nameError}
-                helperText={nameError ? "İsim boş kalamaz" : " "}
+                error={name === undefined}
+                helperText={name === undefined ? "İsim boş kalamaz" : " "}
                 onChange={(e) => {
                     setName(e.target.value)
-                    setNameError(false);
                 }}
             />
             <TextAreaView
                 value={address}
                 onChange={(e) => {
                     setAddress(e.target.value)
-                    setAddressError(false);
                 }}
                 size={"small"}
                 label={"Adres"}
                 required
-                error={addressError}
-                helperText={addressError ? "Adres boş kalamaz" : " "}/>
+                error={address === undefined}
+                helperText={address === undefined ? "Adres boş kalamaz" : " "}/>
 
             <DropdownView
                 options={hospitalTypes}
                 value={hospitalType}
                 onChange={(e) => {
                     setHospitalType(e.target.value)
-                    setHospitalTypeError(false);
                 }}
                 label={"Hastane Tipi"}
                 required
-                error={hospitalTypeError}
-                helperText={hospitalTypeError ? "Tip seçmek zorunludur" : " "}
+                error={hospitalType === undefined}
+                helperText={hospitalType === undefined ? "Tip seçmek zorunludur" : " "}
             />
 
             <Box width={"100%"} display={'flex'} justifyContent={'end'}>
+                <Button variant={"outlined"} onClick={clearForm} sx={{marginRight: "0.5vw"}}>Cancel</Button>
                 <Button variant={"outlined"} onClick={createHospital}>Add</Button>
-                <Button variant={"outlined"} onClick={clearForm}>Cancel</Button>
             </Box>
         </FormBox>
     );
