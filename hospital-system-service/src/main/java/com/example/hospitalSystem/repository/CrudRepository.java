@@ -20,4 +20,8 @@ public abstract class CrudRepository<T extends CrudObject> {
     public T findById(String id) {
         return repository.get(id);
     }
+
+    public void delete(String id) {
+        repository.remove(id);
+    }
 }

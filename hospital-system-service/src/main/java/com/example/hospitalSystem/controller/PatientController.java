@@ -29,4 +29,15 @@ public class PatientController {
         return new ResponseEntity<>(patientService.findById(id), HttpStatus.OK);
     }
 
+    @PutMapping
+    public ResponseEntity<?> update(@RequestBody PatientModel model) {
+        return new ResponseEntity<>(patientService.update(model), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable String id) {
+        patientService.delete(id);
+        return ResponseEntity.ok(ResponseEntity.noContent().build());
+    }
+
 }

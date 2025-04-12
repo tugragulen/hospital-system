@@ -32,5 +32,19 @@ export const postPatient = (patient: PatientModel): Promise<any> => {
     return axios
         .post(`${API_BASE_URL}/patients`, patient)
         .then((response) => response.data)
-        .catch((error) => console.error("Hastane kayıt hatası ", error))
+        .catch((error) => console.error("Hasta kayıt hatası ", error))
+}
+
+export const putPatient = (patient: PatientModel): Promise<any> => {
+    return axios
+        .put(`${API_BASE_URL}/patients`, patient)
+        .then((response) => response.data)
+        .catch((error) => console.error("Hasta kayıt hatası ", error))
+}
+
+export const deletePatient = (id: string): Promise<any> => {
+    return axios
+        .delete(`${API_BASE_URL}/patients/${id}`)
+        .then((response) => response.data)
+        .catch((error) => console.error("Hasta silme hatası ", error))
 }
