@@ -1,13 +1,12 @@
 package com.example.hospitalSystem.models;
 
 import com.example.hospitalSystem.enums.GenderTypeEnum;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+@Table(name = "patients")
 @Getter
 @Setter
 public class PatientModel extends CrudObject {
@@ -17,5 +16,7 @@ public class PatientModel extends CrudObject {
     private int age;
     private String tcNumber;
     private String complaint;
-//    private HospitalModel hospital;
+    @ManyToOne
+    @JoinColumn(name = "hospital_id", nullable = false)
+    private HospitalModel hospital;
 }
