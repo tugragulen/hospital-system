@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -15,7 +15,6 @@ public class PatientService implements CrudService<PatientModel> {
 
     @Override
     public PatientModel save(PatientModel obj) {
-        obj.setId(UUID.randomUUID().toString());
         patientRepository.save(obj);
         return obj;
     }
@@ -26,8 +25,12 @@ public class PatientService implements CrudService<PatientModel> {
     }
 
     @Override
-    public PatientModel findById(String id) {
-        return patientRepository.findById(id);
+    public PatientModel findById(Long id) {
+        Optional<PatientModel> optPatient = patientRepository.findById(id);
+        if (optPatient.isPresent()) {
+            return optPatient.get();
+        }
+        throw new UnsupportedOperationException("Patient not found with id: " + id);
     }
 
 
@@ -43,7 +46,7 @@ public class PatientService implements CrudService<PatientModel> {
         return savedPatient;
     }
 
-    public void delete(String id) {
-        patientRepository.delete(id);
+    public void deleteById(Long id) {
+        patientRepository.deleteById(id);
     }
 }

@@ -25,7 +25,7 @@ public class HospitalController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> findById(@PathVariable String id) {
+    public ResponseEntity<?> findById(@PathVariable Long id) {
         return new ResponseEntity<>(hospitalService.findById(id), HttpStatus.OK);
     }
 

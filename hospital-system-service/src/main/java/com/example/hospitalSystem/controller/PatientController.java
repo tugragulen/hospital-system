@@ -25,7 +25,7 @@ public class PatientController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> findById(@PathVariable String id) {
+    public ResponseEntity<?> findById(@PathVariable Long id) {
         return new ResponseEntity<>(patientService.findById(id), HttpStatus.OK);
     }
 
@@ -35,8 +35,8 @@ public class PatientController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable String id) {
-        patientService.delete(id);
+    public ResponseEntity<?> delete(@PathVariable Long id) {
+        patientService.deleteById(id);
         return ResponseEntity.ok(ResponseEntity.noContent().build());
     }
 

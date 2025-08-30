@@ -10,5 +10,5 @@ public interface CrudService<T extends CrudObject> {
 
     List<T> findAll();
 
-    T findById(String id);
+    T findById(Long id);
 }
